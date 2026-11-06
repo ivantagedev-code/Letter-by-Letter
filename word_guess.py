@@ -13,6 +13,7 @@ hard_words = ["suspicious", "hypothesis", "government", "quarantine", "bureaucra
               "pronunciation", "disappointment", "archaeology", "electricity"]
 
 hint = []
+hint_used = False
 
 while True:
     difficulty = input("SELECT YOUR DIFFICULTY: EASY OR MEDIUM OR HARD: ").lower()
@@ -32,13 +33,14 @@ else:
     attempt = 10
 
 length = len(secret_word)
-print("Current word:", "_ "*length)
+print("\nCurrent word:", "_ "*length)
 guessed_letters = []
 
 while attempt > 0:
     try:
         guess = input("Guess a letter: ").lower()
         if guess == "?":
+            hint_used = True
             if guess not in hint:
                 hint.append(guess)
                 hint_letters = []
@@ -46,11 +48,13 @@ while attempt > 0:
                     if char not in guessed_letters:
                         hint_letters.append(char)
                 hints = random.choice(hint_letters)
-                print(f"Hint: {hints}")
+                guess = hints
 
             else:
                 print("Hint left: 0")
-            continue
+                continue
+        else:
+            hint_used = False
         if not guess.isalpha():
             raise ValueError("Only letters are allowed")
         if len(guess) != 1:
@@ -71,15 +75,16 @@ while attempt > 0:
         else:
             result += "_ "
     current_word = result 
-    print(f"Current word: {current_word}")
     if guess not in secret_word:
         attempt -= 1
         print("Wrong guess! Attempts left:", attempt)
     else:
-        print("Great guess!")
+        if not hint_used:
+            print("Great guess!")
     if "_" not in current_word:
-        print(f"Congratulations!! You guessed the word: {secret_word}")
+        print(f"\nCongratulations!! You guessed the word: {secret_word}")
         break
+    print(f"\nCurrent word: {current_word}")
     if attempt == 0 :
-        print(f"Sorry you failed :( The word was {secret_word}")
+        print(f"\nSorry you failed :( The word was {secret_word}")
         break
