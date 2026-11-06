@@ -1,43 +1,31 @@
-secret_word = "hello"
+import random
+words = ["hello", "castle", "Garden", "Window", "Shadow", "Telescope", "Volcano", "Skeleton", "Hurricane", 
+         "Aquarium", "Paradox", "Hypothesis", "Renaissance", "Perseverance", "Mischievous", "Hippopotamus",
+         "Pickle", "Nonsense", "Quarantine", "Suspicious", "Bureaucracy", "Government", "Constellation", "Theory"]
+secret_word = random.choice(words).lower()
 length = len(secret_word)
-current_word = "_ " * length
-print(f"Current word: {current_word}")
+print("Currrent word:", "_ "*length)
 attempt = 10
-start = 1
-while start <= attempt:
+guessed_letters = []
+while attempt > 0:
     guess = input("Guess a letter: ").lower()
-    start += 1
-    count = 1
-    if guess in secret_word:
-        print("Great guess!")
-        for letter in secret_word:
-            if letter == guess:
-                pos = 1
-                while pos <= count:
-                    for blank in current_word:
-                            blank = pos
-                            #come out of inner loop
-                            if blank == count:
-                                #store letter instead of _
-                                blank = guess
-                                result = "_ " * (count - 1) + guess + "_ " * ((length) - count)
-                                #printing the current word
-                                print(f"Current word: {result}")
-                                pos += 1
-                                break
-                            else:
-                                pos += 1
-                count += 1
-                #come out of middle loop
-                if blank == guess:
-                    break
-            else:
-                count += 1
-    else:
+    result = ""
+    guessed_letters.append(guess)
+    for letter in secret_word:
+        if letter in guessed_letters:
+            result += letter + " "
+        else:
+            result += "_ "
+    current_word = result 
+    print(current_word)
+    if guess not in secret_word:
         attempt -= 1
-        print(f"Wrong guess! Attempt left: {attempt}")
-    #come out of outer loop
-    if attempt == 0:
+        print("Wrong guess! Attempts left:", attempt)
+    else:
+        print("Great guess!")
+    if "_" not in current_word:
+        print(f"Congratulations!! You guessed the word: {secret_word}")
         break
-
-        
+    if attempt == 0 :
+        print(f"Sorry you failed :( The word was {secret_word}")
+        break
