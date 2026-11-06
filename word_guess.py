@@ -1,11 +1,33 @@
 import random
-words = ["hello", "castle", "Garden", "Window", "Shadow", "Telescope", "Volcano", "Skeleton", "Hurricane", 
-         "Aquarium", "Paradox", "Hypothesis", "Renaissance", "Perseverance", "Mischievous", "Hippopotamus",
-         "Pickle", "Nonsense", "Quarantine", "Suspicious", "Bureaucracy", "Government", "Constellation", "Theory"]
-secret_word = random.choice(words).lower()
+
+easy_words = ["hello", "castle", "garden", "window", "shadow", "pickle", "theory",
+              "planet", "bridge", "candle", "jungle", "pencil", "rocket", "purple", "monkey"]
+
+medium_words = ["volcano", "paradox", "nonsense", "skeleton", "aquarium", "telescope", "hurricane",
+                "mountain", "elephant", "notebook", "universe", "keyboard", "umbrella",
+                "adventure", "chocolate"]
+
+hard_words = ["suspicious", "hypothesis", "government", "quarantine", "bureaucracy", "renaissance",
+              "perseverance", "mischievous", "hippopotamus", "constellation",
+              "refrigerator", "extraordinary", "responsibility", "communication",
+              "pronunciation", "disappointment", "archaeology", "electricity"]
+while True:
+    difficulty = input("SELECT YOUR DIFFICULTY: EASY OR MEDIUM OR HARD: ").lower()
+    if difficulty == "easy" or difficulty == "medium" or difficulty == "hard":
+        break
+    else:
+        print("Select a valid difficulty!")
+if difficulty == "easy":
+    secret_word = random.choice(easy_words)
+    attempt = 3
+elif difficulty == "medium":
+    secret_word = random.choice(medium_words)
+    attempt = 7
+else:
+    secret_word = random.choice(hard_words)
+    attempt = 10
 length = len(secret_word)
 print("Current word:", "_ "*length)
-attempt = 10
 guessed_letters = []
 while attempt > 0:
     try:
