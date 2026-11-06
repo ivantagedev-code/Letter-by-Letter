@@ -49,7 +49,7 @@ while attempt > 0:
                         hint_letters.append(char)
                 hints = random.choice(hint_letters)
                 guess = hints
-
+                print("Hint was succesfully used!")
             else:
                 print("Hint left: 0")
                 continue
