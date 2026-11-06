@@ -4,13 +4,26 @@ words = ["hello", "castle", "Garden", "Window", "Shadow", "Telescope", "Volcano"
          "Pickle", "Nonsense", "Quarantine", "Suspicious", "Bureaucracy", "Government", "Constellation", "Theory"]
 secret_word = random.choice(words).lower()
 length = len(secret_word)
-print("Currrent word:", "_ "*length)
+print("Current word:", "_ "*length)
 attempt = 10
 guessed_letters = []
 while attempt > 0:
-    guess = input("Guess a letter: ").lower()
+    try:
+        guess = input("Guess a letter: ").lower()
+        if not guess.isalpha():
+            raise ValueError("Only letters are allowed")
+        if len(guess) != 1:
+            raise ValueError("Enter a single letter")
+    except ValueError:
+        print("Invalid input. Please try again.")
+        continue
+    
     result = ""
-    guessed_letters.append(guess)
+    if guess not in guessed_letters:
+        guessed_letters.append(guess)
+    else:
+        print("Letter already guessed!")
+        continue
     for letter in secret_word:
         if letter in guessed_letters:
             result += letter + " "
