@@ -1,17 +1,32 @@
-# Python Practice
+# Letter by Letter
 
-Small Python programs I build while learning from scratch, Nov 2026 onward.
+A word guessing game for the terminal, written in Python.
 
-## Projects
+The game picks a random word. You guess one letter at a time. Correct
+letters appear in the word, and every wrong guess costs one of your
+10 attempts. Guess the whole word before you run out to win.
 
-### Word Guessing Game (word_guess.py)
-A command-line game: the program hides a word, and you guess it one
-letter at a time. Wrong guesses cost you attempts.
+## How to run
 
-**Run it:** `python word_guess.py`
+1. Install Python 3.
+2. Download or clone this repository.
+3. In the project folder, run:
 
-**Status:** v0, first draft. Works for single guesses.
-**Next:** remember all guessed letters, add win and lose messages,
-pick random words.
+   python game.py
 
-**What I learned:** loops, conditionals, user input, strings.
+## What I practiced
+
+- Loops and conditionals
+- Lists and strings
+- The `random` module
+- Git and GitHub
+
+## Known issues / To do
+
+- Typing more than one letter, or nothing, is not handled yet
+- Guessing the same wrong letter twice costs two attempts
+- Add a play again option
+
+## Author
+
+Isha
