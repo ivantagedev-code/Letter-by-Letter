@@ -14,3 +14,7 @@ hard_words = ["suspicious", "hypothesis", "government", "quarantine", "bureaucra
               "pronunciation", "disappointment", "archaeology", "electricity"]
 
 st.title("Letter by Letter")
+
+options = ["Easy", "Medium", "Hard"]
+selected_mode = st.selectbox("Choose your difficulty", options, index = None, placeholder="Difficulty?")
+st.write(f"Your selected difficulty: {selected_mode}")
