@@ -90,4 +90,16 @@ def play_game():
             print(f"\nSorry you failed :( The word was {secret_word}")
             break
 
-play_game()
+while True:
+    play_game()
+    print("\ny: --Restart--")
+    print("n: --Quit--")
+    while True:
+        what = input("y OR n: ").lower()
+        if what == "y" or what == "n":
+            break
+        else:
+            print("Invalid input!")
+            continue
+    if what == "n":
+        break
