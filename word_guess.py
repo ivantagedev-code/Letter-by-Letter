@@ -1,5 +1,20 @@
 import random
 
+def print_intro():
+    print("=" * 45)
+    print("           WELCOME TO WORD GUESSER           ")
+    print("=" * 45)
+    print("Rules:")
+    print("- Guess the secret word one letter at a time.")
+    print("- Type '?' if you get stuck to use a hint.")
+    print("\nDifficulties:")
+    print("  EASY   : 3 attempts, simple words")
+    print("  MEDIUM : 7 attempts, longer words")
+    print("  HARD   : 10 attempts, complex words")
+    print("=" * 45 + "\n")
+
+print_intro()
+
 easy_words = ["hello", "castle", "garden", "window", "shadow", "pickle", "theory",
               "planet", "bridge", "candle", "jungle", "pencil", "rocket", "purple", "monkey"]
 
@@ -103,3 +118,4 @@ while True:
             continue
     if what == "n":
         break
+
