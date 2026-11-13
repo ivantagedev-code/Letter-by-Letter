@@ -32,7 +32,7 @@ def play_game():
     hint_used = False
 
     while True:
-        difficulty = input("SELECT YOUR DIFFICULTY: EASY OR MEDIUM OR HARD: ").lower()
+        difficulty = input("SELECT YOUR DIFFICULTY: EASY OR MEDIUM OR HARD: ").strip().lower()
         if difficulty == "easy" or difficulty == "medium" or difficulty == "hard":
             break
         else:
